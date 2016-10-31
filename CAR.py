@@ -1,36 +1,43 @@
 class Car(object):
-    def __init__(self, name = None, model = None, car_type = None, num_of_doors = None, num_of_wheels = None, speed = None):
+    speed = 0
+    num_of_wheels = 4
+    num_of_wheels = 4
+
+    def __init__(self, name=None, model=None, car_type= 'saloon'):
         self.name = name
         self.model = model
         self.car_type = car_type
-        self.num_of_doors = num_of_doors
-        self.num_of_wheels = num_of_wheels
-        self.speed = 0
-        if self.name == None:
+
+
+        if self.name is None:
             self.name = 'General'
 
-        if self.model == None:
+        if self.model is None:           
             self.model = 'GM'
 
-        if self.name == 'Porshe' or self.name == 'Koenigsegg':
-            self.num_of_doors = 2
+        if self.name == 'Koenigsegg' or self.name == 'Porshe':
+            self.num_of_doors=2
         else:
-            self.num_of_doors = 4
+            self.num_of_doors= 4
 
         if self.car_type == 'trailer':
-            self.num_of_wheels = 8
+          self.num_of_wheels = 8
         else:
-            self.num_of_wheels = 4
+          self.num_of_wheels = 4
+
 
     def is_saloon(self):
-        if self.car_type == None or self.car_type !='trailer':
-            self.car_type = 'saloon'
-            return self
-    def drive(self, pedal):
-        self.pedal = pedal
-        if self.pedal == 7 and self.car_type =='trailer':
+        if self.car_type == 'saloon':
+            return True
+        if self.car_type == 'trailer':
+            return False
+
+    def drive(self,pedal):
+        if 3 < pedal <= 7:
             self.speed = 77
             return self
-        elif self.pedal == 3 and self.name == 'Mercedes':
+        elif 0 < pedal <= 3:
             self.speed = 1000
             return self
+        else:
+          return self
